@@ -8,13 +8,13 @@ Note: The scripts expects that the datafile has been downloaded and extracted in
 
 Take the sum of the emissions per year by using the aggregate function:
 
-```{r aggEmissions, echo = FALSE}
+```{r, eval=FALSE}
 aggEmissions <- aggregate(Emissions ~ year, NEI, sum)
 ```
 
 Plotting the total emissions in a barplot and adding annotations:
 
-```{r plot1}
+```{r, eval=FALSE}
 with(aggEmissions,
      barplot(Emissions / 10^6,
              names.arg = year,
