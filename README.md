@@ -76,3 +76,5 @@ print(plot3)
 
 ![Plot3.png.](plot3.png)
 
+The plot shows that emission types *non-road*, *nonpoint*, and *on-road* have decreased in the period 1999 to 2008, while the *point* emission type has increased in the same time period.
+
