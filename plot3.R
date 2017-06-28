@@ -35,14 +35,14 @@ BCM <- filter(NEI, fips == "24510")
 aggEmissionsBCM <- aggregate(Emissions ~ type + year, data = BCM, FUN = sum)
 
 ## Set up the graphics device.
-png("plot3.png", width = 480, height = 480)
+png("plot3.png", width = 640, height = 480)
 
 ## Generate plot using the ggplot2 package
 plot3 <- ggplot(aggEmissionsBCM, aes(year, Emissions, color = type)) +
         geom_line() +
         xlab("Year") +
         ylab(expression("Total PM"[2.5]* " Emissions (tons)")) +
-        ggtitle(expression("Total PM"[2.5]* " Emissions in Baltimore City, Maryland")
+        ggtitle(expression("Total PM"[2.5]* " Emissions in Baltimore City, Maryland"))
 
 print(plot3)
         
