@@ -51,3 +51,28 @@ with(aggEmissionsBCM,
 ![Plot2.png.](plot2.png)
 
 The barplot shows that there was a spike in the PM2.5 emissions in 2005, but overall the total PM2.5 emissions have decreased in Baltimore City, Maryland from 1999 to 2008.
+
+## Question 2
+
+Filter the dataset by for Baltimore City, Maryland and take the sum of the emissions grouped by type and year by using the aggregate function:
+
+```{r, eval=FALSE}
+BCM <- filter(NEI, fips == "24510")
+aggEmissionsBCM <- aggregate(Emissions ~ type + year, BCM, sum)
+```
+
+Plotting the total emissions for the four types of PM2.5 usinng ggplot2 and adding annotations:
+
+```{r, eval=FALSE}
+
+plot3 <- ggplot(aggEmissionsBCM, aes(year, Emissions, color = type)) +
+        geom_line() +
+        xlab("Year") +
+        ylab(expression("Total PM"[2.5]* " Emissions (tons)")) +
+        ggtitle(expression("Total PM"[2.5]* " Emissions in Baltimore City, Maryland"))
+
+print(plot3)
+```
+
+![Plot3.png.](plot3.png)
+
