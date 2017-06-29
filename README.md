@@ -52,7 +52,7 @@ with(aggEmissionsBCM,
 
 The barplot shows that there was a spike in the PM2.5 emissions in 2005, but overall the total PM2.5 emissions have decreased in Baltimore City, Maryland from 1999 to 2008.
 
-## Question 2
+## Question 3
 
 Filter the dataset by for Baltimore City, Maryland and take the sum of the emissions grouped by type and year by using the aggregate function:
 
