@@ -78,3 +78,38 @@ print(plot3)
 
 The plot shows that emission types *non-road*, *nonpoint*, and *on-road* have decreased in the period 1999 to 2008, while the *point* emission type has increased in the same time period.
 
+## Question 4
+
+Grab the codes for coal combustion related emissions:
+
+```{r, eval=FALSE}
+SCC.codes = SCC[which(grepl("coal", SCC$EI.Sector, ignore.case = TRUE) & grepl("comb", SCC$EI.Sector, ignore.case = TRUE)),]$SCC
+```
+
+Filter the dataset using the SCC codes for coal combustion sources:
+
+```{r, eval=FALSE}
+NEI.filtered <- filter(NEI, SCC %in% SCC.codes)
+```
+
+Take the sum of the emissions per year by using the aggregate function:
+
+```{r, eval=FALSE}
+NEI.sum <- aggregate(Emissions ~ year, NEI.filtered, sum)
+```
+
+Plot the total emissions in a barplot and adding annotations:
+
+```{r, eval=FALSE}
+with(NEI.sum,
+     barplot(Emissions,
+             names.arg = year,
+             xlab = "Year",
+             ylab = "PM2.5 Emission (Tons)",
+             main = "Total PM2.5 emissions from\n coal combustion-related sources in US")
+)
+```
+![Plot4.png.](plot4.png)
+
+The plot shows that the emissions from coal combustion related sources have decreased in the period 1999 to 2008.
+
