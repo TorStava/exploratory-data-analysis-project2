@@ -114,3 +114,31 @@ with(NEI.sum,
 
 The plot shows that the emissions from coal combustion related sources have decreased in the period 1999 to 2008.
 
+## Question 5
+
+Filter the dataset for "on-road" type emission types in Baltimore:
+
+```{r, eval=FALSE}
+NEI.filtered <- filter(NEI, fips == "24510" & type == "ON-ROAD")
+```
+
+Take the sum of the emissions per year by using the aggregate function:
+
+```{r, eval=FALSE}
+NEI.sum <- aggregate(Emissions ~ year, NEI.filtered, sum)
+```
+
+Plot the total emissions in a barplot and adding annotations:
+
+```{r, eval=FALSE}
+with(NEI.sum,
+     barplot(Emissions,
+             names.arg = year,
+             xlab = "Year",
+             ylab = "PM2.5 Emission (Tons)",
+             main = "Total PM2.5 Emissions from\nmotor vehicle sources in Baltimore")
+)
+```
+![Plot5.png.](plot5.png)
+
+The plot shows that the emissions from motor vehicle sources have decreased in Baltimore in the period 1999 to 2008.
