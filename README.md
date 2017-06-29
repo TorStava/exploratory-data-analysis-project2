@@ -142,3 +142,35 @@ with(NEI.sum,
 ![Plot5.png.](plot5.png)
 
 The plot shows that the emissions from motor vehicle sources have decreased in Baltimore in the period 1999 to 2008.
+
+## Question 6
+
+Filter the dataset for "on-road" type emission types in Baltimore or LA:
+
+```{r, eval=FALSE}
+NEI.filtered <- filter(NEI, (fips == "24510" | fips == "06037") & type == "ON-ROAD")
+```
+
+Take the sum of the emissions grouped by fips and year by using the aggregate function:
+
+```{r, eval=FALSE}
+NEI.sum <- aggregate(Emissions ~ year + fips, NEI.filtered, sum)
+```
+
+Plot the total emissions using ggplot2 and adding annotations:
+
+```{r, eval=FALSE}
+plot5 <- ggplot(data=NEI.sum, aes(x=year, y=Emissions, group=fips, colour=fips)) + 
+                geom_line() + 
+                geom_point() + 
+                xlab("Year") + 
+                ylab("Total Emissions (tons)") + 
+                ggtitle("Total PM2.5 emissions in Baltimore City and Los Angeles County\n for motor vehicle sources in the period 1999 to 2008") + 
+                scale_colour_discrete(name="County", 
+                labels=c("Los Angeles \nCounty, California", "Baltimore City, Maryland"))
+
+print(plot5)
+```
+![Plot6.png.](plot6.png)
+
+The plot shows that the emissions from motor vehicle sources have decreased in Baltimore and increased in LA in the period 1999 to 2008. The relative change is greatest in Baltimore City.
