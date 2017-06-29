@@ -83,7 +83,8 @@ The plot shows that emission types *non-road*, *nonpoint*, and *on-road* have de
 Grab the codes for coal combustion related emissions:
 
 ```{r, eval=FALSE}
-SCC.codes = SCC[which(grepl("coal", SCC$EI.Sector, ignore.case = TRUE) & grepl("comb", SCC$EI.Sector, ignore.case = TRUE)),]$SCC
+SCC.codes = SCC[which(grepl("coal", SCC$EI.Sector, ignore.case = TRUE) & 
+        grepl("comb", SCC$EI.Sector, ignore.case = TRUE)),]$SCC
 ```
 
 Filter the dataset using the SCC codes for coal combustion sources:

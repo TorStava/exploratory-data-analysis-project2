@@ -31,7 +31,8 @@ if(file.exists(fileSCC)) {
 }
 
 ## Find the SCC codes for coal combustion related sources
-SCC.codes = SCC[which(grepl("coal", SCC$EI.Sector, ignore.case = TRUE) & grepl("comb", SCC$EI.Sector, ignore.case = TRUE)),]$SCC
+SCC.codes = SCC[which(grepl("coal", SCC$EI.Sector, ignore.case = TRUE) & 
+        grepl("comb", SCC$EI.Sector, ignore.case = TRUE)),]$SCC
 
 ## Filter the dataset using the SCC codes for coal combustion sources
 NEI.filtered <- filter(NEI, SCC %in% SCC.codes)
@@ -48,7 +49,7 @@ with(NEI.sum,
              names.arg = year,
              xlab = "Year",
              ylab = "PM2.5 Emission (Tons)",
-             main = "Total PM2.5 emissions from\n coal combustion-related sources in US")
+             main = "Total PM2.5 emissions from\ncoal combustion-related sources in US")
 )
 
 ## Close the graphics device.
